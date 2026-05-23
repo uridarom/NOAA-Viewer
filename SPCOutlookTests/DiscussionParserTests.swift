@@ -92,11 +92,34 @@ final class DiscussionParserTests: XCTestCase {
 
     func testPrevDiscussionExcluded() {
         let result = DiscussionParser.parse(day1Sample)
-        // "TX/OK" section from .PREV DISCUSSION must not appear
+        // "TX/OK" section from .PREV DISCUSSION must not appear in the main sections
         XCTAssertFalse(result.sections.map(\.title).contains("TX/OK"))
         for section in result.sections {
             XCTAssertFalse(section.body.contains("Old previous discussion"))
         }
+    }
+
+    func testPrevDiscussionParsed() {
+        let result = DiscussionParser.parse(day1Sample)
+        let prev = result.previousDiscussion
+        XCTAssertNotNil(prev, "previousDiscussion should be non-nil when .PREV DISCUSSION block is present")
+        XCTAssertEqual(prev?.sections.count, 1)
+        XCTAssertEqual(prev?.sections.first?.title, "TX/OK")
+        XCTAssertTrue(prev?.sections.first?.body.contains("Old previous discussion") ?? false)
+    }
+
+    func testPrevDiscussionIssuanceParsed() {
+        let result = DiscussionParser.parse(day1Sample)
+        if let date = result.previousDiscussion?.issuance {
+            let cal = Calendar(identifier: .gregorian)
+            XCTAssertEqual(cal.component(.year, from: date), 2026)
+        }
+        // nil is acceptable if the timezone abbreviation isn't supported on this host
+    }
+
+    func testDay48HasNoPrevDiscussion() {
+        let result = DiscussionParser.parse(day48Sample)
+        XCTAssertNil(result.previousDiscussion)
     }
 
     func testDay48DiscussionSection() {

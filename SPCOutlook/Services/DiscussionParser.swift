@@ -84,7 +84,47 @@ enum DiscussionParser {
             }
         }
 
-        return ParsedDiscussion(headline: headline, issuance: issuance, sections: sections)
+        // ── 7. Parse .PREV DISCUSSION block if present (Day 1 updated outlooks) ──
+        // The loop may have stopped at the author line ("..Name..") — skip it and any blanks.
+        if idx < lines.count, lines[idx].trimmed.hasPrefix(".."), !lines[idx].trimmed.hasPrefix("...") {
+            idx += 1
+        }
+        while idx < lines.count, lines[idx].trimmed.isEmpty { idx += 1 }
+
+        var previousDiscussion: PreviousDiscussion? = nil
+        if idx < lines.count, lines[idx].trimmed.hasPrefix(".PREV DISCUSSION") {
+            let prevIssuance = extractPrevIssuance(from: lines[idx].trimmed)
+            idx += 1
+            while idx < lines.count, lines[idx].trimmed.isEmpty { idx += 1 }
+
+            var prevSections: [ParsedSection] = []
+            while idx < lines.count {
+                let trimmed = lines[idx].trimmed
+                if trimmed == "$$" { break }
+                if isSectionHeader(trimmed) {
+                    let title = stripDots(trimmed)
+                    idx += 1
+                    var body: [String] = []
+                    while idx < lines.count {
+                        let bt = lines[idx].trimmed
+                        if bt == "$$" || isSectionHeader(bt) { break }
+                        body.append(lines[idx])
+                        idx += 1
+                    }
+                    let reflowed = reflow(body)
+                    if !reflowed.isEmpty {
+                        prevSections.append(ParsedSection(title: title, body: reflowed))
+                    }
+                } else {
+                    idx += 1
+                }
+            }
+            if !prevSections.isEmpty {
+                previousDiscussion = PreviousDiscussion(issuance: prevIssuance, sections: prevSections)
+            }
+        }
+
+        return ParsedDiscussion(headline: headline, issuance: issuance, sections: sections, previousDiscussion: previousDiscussion)
     }
 
     // MARK: - Helpers
@@ -129,6 +169,13 @@ enum DiscussionParser {
         }
         if !current.isEmpty { paragraphs.append(current.joined(separator: " ")) }
         return paragraphs.joined(separator: "\n\n")
+    }
+
+    /// Extract the issuance date from a ".PREV DISCUSSION... /ISSUED 1134 AM CDT Sat May 23 2026/" line.
+    private static func extractPrevIssuance(from line: String) -> Date? {
+        guard let start = line.range(of: "/ISSUED "),
+              let end = line.range(of: "/", range: start.upperBound..<line.endIndex) else { return nil }
+        return parseDate(String(line[start.upperBound..<end.lowerBound]))
     }
 
     /// Parse SPC issuance timestamps like "0234 PM CDT Fri May 22 2026".

@@ -5,10 +5,16 @@ struct ParsedSection: Codable {
     let body: String
 }
 
+struct PreviousDiscussion: Codable {
+    let issuance: Date?
+    let sections: [ParsedSection]
+}
+
 struct ParsedDiscussion: Codable {
     let headline: String
     let issuance: Date?
     let sections: [ParsedSection]
+    var previousDiscussion: PreviousDiscussion? = nil
 
     static let mock = ParsedDiscussion(
         headline: "THERE IS A SLIGHT RISK OF SEVERE THUNDERSTORMS ACROSS PARTS OF THE CENTRAL HIGH PLAINS",
