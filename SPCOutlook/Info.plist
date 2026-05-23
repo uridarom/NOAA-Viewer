@@ -27,6 +27,8 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to show severe weather risks at your location.</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UIRequiredDeviceCapabilities</key>

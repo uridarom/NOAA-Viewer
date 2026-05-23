@@ -1,3 +1,4 @@
+import CoreLocation
 import UIKit
 
 @MainActor
@@ -8,8 +9,12 @@ final class OutlookViewModel: ObservableObject {
     @Published var isLoading    = false
     @Published var isRefreshing = false
     @Published var toastMessage: String? = nil
+    @Published var userCoordinate: CLLocationCoordinate2D?
+    @Published var wfo: String?
+    @Published var localRisks: LocalRisks = .zero
 
-    private let service = SPCNetworkService()
+    private let service          = SPCNetworkService()
+    private let locationService  = LocationService()
     private var lastSeenIssuanceAt: Date? = nil
 
     // MARK: - Initial load
@@ -38,6 +43,40 @@ final class OutlookViewModel: ObservableObject {
         }
     }
 
+    // MARK: - Location & WFO
+
+    func startLocationServices() async {
+        guard let coord = await locationService.requestLocation() else { return }
+        userCoordinate = coord
+        // Resolve WFO and compute local risks in parallel, then assign on main actor.
+        async let wfoFetch   = WFOResolver.resolve(coordinate: coord)
+        async let risksFetch = computeRisks(at: coord)
+        let (resolvedWFO, risks) = await (wfoFetch, risksFetch)
+        wfo        = resolvedWFO
+        localRisks = risks
+    }
+
+    // MARK: - Local Risks
+
+    func loadLocalRisks() async {
+        guard let coord = userCoordinate else { return }
+        localRisks = await computeRisks(at: coord)
+    }
+
+    // Fetches all three GeoJSON layers for Day 1 in parallel and runs PIP.
+    private func computeRisks(at coord: CLLocationCoordinate2D) async -> LocalRisks {
+        async let tornado = fetchGeoJSONSafe(day: .one, risk: .tornado)
+        async let hail    = fetchGeoJSONSafe(day: .one, risk: .hail)
+        async let wind    = fetchGeoJSONSafe(day: .one, risk: .wind)
+        let (t, h, w) = await (tornado, hail, wind)
+        return LocalRiskCalculator.localRisks(at: coord, tornado: t, hail: h, wind: w)
+    }
+
+    private func fetchGeoJSONSafe(day: OutlookDay, risk: RiskType) async -> GeoJSONFeatureCollection? {
+        guard let url = SPCEndpoints.geoJSON(day: day, risk: risk) else { return nil }
+        return try? await service.fetchGeoJSON(from: url)
+    }
+
     // MARK: - Manual refresh
 
     func refresh(day: OutlookDay, risk: RiskType) async {
@@ -62,6 +101,7 @@ final class OutlookViewModel: ObservableObject {
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.load(day: day, risk: risk, bypassCache: true) }
             group.addTask { await self.loadDiscussion(day: day, bypassCache: true) }
+            if day == .one { group.addTask { await self.loadLocalRisks() } }
         }
         lastSeenIssuanceAt = serverDate ?? Date()
         showToast("Updated")

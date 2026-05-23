@@ -28,6 +28,14 @@ struct SPCNetworkService {
         return text
     }
 
+    // MARK: - GeoJSON
+
+    func fetchGeoJSON(from url: URL,
+                      cachePolicy: URLRequest.CachePolicy = .returnCacheDataElseLoad) async throws -> GeoJSONFeatureCollection {
+        let data = try await fetchData(from: url, cachePolicy: cachePolicy)
+        return try JSONDecoder().decode(GeoJSONFeatureCollection.self, from: data)
+    }
+
     // MARK: - HEAD check
 
     /// Issues a HEAD request and returns the server's `Last-Modified` date, or nil if unavailable.

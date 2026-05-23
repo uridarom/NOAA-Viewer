@@ -1,0 +1,259 @@
+{
+  "" : {
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlook-primary.dia",
+    "emit-module-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlook-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlook-primary-emit-module.dia",
+    "pch" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlook-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlook-primary.swiftdeps"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/App/SPCOutlookApp.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCOutlookApp~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Models/GeoJSON.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeoJSON~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Models/LocalRisks.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisks~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Models/OutlookDay.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookDay~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Models/OutlookSnapshot.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookSnapshot~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Models/RiskType.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskType~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/DiscussionParser.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionParser~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/IssuanceSchedule.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/IssuanceSchedule~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/LocalRiskCalculator.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRiskCalculator~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/LocationService.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocationService~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/SPCEndpoints.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCEndpoints~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/SPCNetworkService.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCNetworkService~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Services/SPCProjection.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SPCProjection~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Theme/Color+Theme.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Color+Theme~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Theme/Font+Theme.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/Font+Theme~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/ViewModels/OutlookViewModel.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookViewModel~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/ContentView.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/DaySelector.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DaySelector~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/DiscussionView.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/DiscussionView~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/HeaderView.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/HeaderView~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/LocalRisksCard.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/LocalRisksCard~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/OutlookImageView.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/OutlookImageView~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/RiskTabs.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/RiskTabs~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/SPCOutlook/Views/SettingsView.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/uridarom/Documents/Hobbies/NOAA Viewer/build/SPCOutlook.build/Debug-iphonesimulator/SPCOutlook.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

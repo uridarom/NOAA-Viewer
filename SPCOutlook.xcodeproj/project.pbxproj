@@ -32,6 +32,12 @@
 		C9E404AA61494F06C2D20451 /* Font+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F0D7D646CAC0DA1E89DB1 /* Font+Theme.swift */; };
 		D8E78CC478E06269A019DAD4 /* RiskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEB715F22613E32725D6A7F /* RiskType.swift */; };
 		DAAD5015054AAAE905413264 /* RiskTabDisableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36CA107D173E8A2AAAE8F2E /* RiskTabDisableTests.swift */; };
+		9F1F56162ED3455B93FFA3E2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622FCDE5E97249AA88E8CA5F /* LocationService.swift */; };
+		5A85122BF2934F51A8C13AA8 /* WFOResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BA195269140F9AFB21100 /* WFOResolver.swift */; };
+		2245202005F74ACDAB551CA8 /* GeoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4843C3E440E34B3DA336B200 /* GeoJSON.swift */; };
+		31CEF799220142A093D170D3 /* LocalRiskCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C1EF750E4E0BA787C4CD /* LocalRiskCalculator.swift */; };
+		C4EABE6791184817A7999EAB /* SPCProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE7328DF5B409F9A812EC8 /* SPCProjection.swift */; };
+		408551D9AE8F499689E310F4 /* LocalRiskCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4DF9B5AEDB43E3BA003229 /* LocalRiskCalculatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +79,12 @@
 		F36CA107D173E8A2AAAE8F2E /* RiskTabDisableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskTabDisableTests.swift; sourceTree = "<group>"; };
 		FE614F8606483C73563508B3 /* SPCOutlookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCOutlookApp.swift; sourceTree = "<group>"; };
 		FFB3161C9A5C018CD810997C /* DiscussionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionView.swift; sourceTree = "<group>"; };
+		622FCDE5E97249AA88E8CA5F /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		8B1BA195269140F9AFB21100 /* WFOResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFOResolver.swift; sourceTree = "<group>"; };
+		4843C3E440E34B3DA336B200 /* GeoJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoJSON.swift; sourceTree = "<group>"; };
+		B7F7C1EF750E4E0BA787C4CD /* LocalRiskCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRiskCalculator.swift; sourceTree = "<group>"; };
+		76BE7328DF5B409F9A812EC8 /* SPCProjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCProjection.swift; sourceTree = "<group>"; };
+		2D4DF9B5AEDB43E3BA003229 /* LocalRiskCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRiskCalculatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -88,6 +100,7 @@
 		162D980DF74BAA83F3F5DF4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4843C3E440E34B3DA336B200 /* GeoJSON.swift */,
 				70F72F4EF9381DE296135055 /* LocalRisks.swift */,
 				D53CD092D467631E561961D6 /* OutlookDay.swift */,
 				1CA8E014420B37D941570358 /* OutlookSnapshot.swift */,
@@ -101,6 +114,7 @@
 			children = (
 				354D51D5EEA94A5F9E415265 /* DiscussionParserTests.swift */,
 				BAC7A93A92FE9FB43C3A64E1 /* IssuanceScheduleTests.swift */,
+				2D4DF9B5AEDB43E3BA003229 /* LocalRiskCalculatorTests.swift */,
 				F36CA107D173E8A2AAAE8F2E /* RiskTabDisableTests.swift */,
 				5D69CAE3F9B39A42A74BD9C5 /* SPCEndpointsTests.swift */,
 			);
@@ -176,8 +190,12 @@
 			children = (
 				29B60025B35D379D201F0E19 /* DiscussionParser.swift */,
 				80B446431EBD92066B909460 /* IssuanceSchedule.swift */,
+				B7F7C1EF750E4E0BA787C4CD /* LocalRiskCalculator.swift */,
+				622FCDE5E97249AA88E8CA5F /* LocationService.swift */,
 				B25E29E688945902D0DA0BAA /* SPCEndpoints.swift */,
 				66EC8A4E6B59BF2F3A0F75C7 /* SPCNetworkService.swift */,
+				76BE7328DF5B409F9A812EC8 /* SPCProjection.swift */,
+				8B1BA195269140F9AFB21100 /* WFOResolver.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -284,10 +302,15 @@
 				7187810BEC99D0AE958A64C9 /* OutlookViewModel.swift in Sources */,
 				633646CD51214394DAD9F8ED /* RiskTabs.swift in Sources */,
 				D8E78CC478E06269A019DAD4 /* RiskType.swift in Sources */,
+				2245202005F74ACDAB551CA8 /* GeoJSON.swift in Sources */,
+				31CEF799220142A093D170D3 /* LocalRiskCalculator.swift in Sources */,
+				9F1F56162ED3455B93FFA3E2 /* LocationService.swift in Sources */,
 				5E50ABEA7864589312FE88A1 /* SPCEndpoints.swift in Sources */,
 				A31660E89F9F608494B9363F /* SPCNetworkService.swift in Sources */,
+				C4EABE6791184817A7999EAB /* SPCProjection.swift in Sources */,
 				97295862A1C8A964EE32B8E7 /* SPCOutlookApp.swift in Sources */,
 				3D39FCCCAF5E63E5DA996DA5 /* SettingsView.swift in Sources */,
+				5A85122BF2934F51A8C13AA8 /* WFOResolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +320,7 @@
 			files = (
 				4208F658856A050E19D8500E /* DiscussionParserTests.swift in Sources */,
 				B935A7969A9E0CFBC3E0BB87 /* IssuanceScheduleTests.swift in Sources */,
+				408551D9AE8F499689E310F4 /* LocalRiskCalculatorTests.swift in Sources */,
 				DAAD5015054AAAE905413264 /* RiskTabDisableTests.swift in Sources */,
 				78A3C5250FCA2A1A5263C580 /* SPCEndpointsTests.swift in Sources */,
 			);

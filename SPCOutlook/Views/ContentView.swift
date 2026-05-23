@@ -18,7 +18,7 @@ struct ContentView: View {
                 )
 
                 HStack(alignment: .top, spacing: 12) {
-                    LocalRisksCard(localRisks: .mock)
+                    LocalRisksCard(localRisks: viewModel.localRisks)
                     DaySelector(selectedDay: $selectedDay, thumbnails: viewModel.thumbnails)
                         .frame(maxWidth: .infinity)
                 }
@@ -57,6 +57,7 @@ struct ContentView: View {
                 group.addTask { await viewModel.load(day: selectedDay, risk: selectedRisk) }
                 group.addTask { await viewModel.loadThumbnails() }
                 group.addTask { await viewModel.loadDiscussion(day: selectedDay) }
+                group.addTask { await viewModel.startLocationServices() }
             }
         }
         .onChange(of: selectedDay) { newDay in
@@ -72,6 +73,7 @@ struct ContentView: View {
                 await withTaskGroup(of: Void.self) { group in
                     group.addTask { await viewModel.load(day: newDay, risk: targetRisk) }
                     group.addTask { await viewModel.loadDiscussion(day: newDay) }
+                    if newDay == .one { group.addTask { await viewModel.loadLocalRisks() } }
                 }
             }
         }
