@@ -722,7 +722,7 @@ Each step is independently buildable and testable. Don't move to step N+1 until 
 **Goal:** Match the design pixel-close.
 
 **Tasks:**
-1. Side-by-side the design screenshot with the running app at every screen state. Tune padding, font sizes, opacities until they match.
+1. Side-by-side the design screenshot (AppDesignReference.png) with the running app at every screen state. Tune padding, font sizes, opacities until they match.
 2. Verify the risk percentage colors shift correctly with the tier ramp from §2.2.
 3. Add subtle haptic feedback on tab switches and day selection (`UIImpactFeedbackGenerator(style: .light)`).
 4. Verify all interactive elements meet the 44×44pt tap target.

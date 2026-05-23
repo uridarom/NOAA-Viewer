@@ -73,6 +73,31 @@ enum SPCEndpoints {
         }
     }
 
+    // MARK: - Regional (WFO) images (§1.5)
+    // Days 1–2: categorical + tornado/hail/wind.
+    // Day 3: categorical only; individual prob types return nil.
+    // Days 4–8: per-day PROB image for .general only; individual risks return nil.
+
+    static func regionalImage(day: OutlookDay, risk: RiskType, wfo: String) -> URL? {
+        guard !wfo.isEmpty else { return nil }
+        let base = "https://www.spc.noaa.gov/partners/outlooks/cwa/images/"
+        let n = day.rawValue
+        switch day {
+        case .one, .two:
+            switch risk {
+            case .general:  return url(base + "\(wfo)_swody\(n).png")
+            case .tornado:  return url(base + "\(wfo)_swody\(n)_TORN.png")
+            case .hail:     return url(base + "\(wfo)_swody\(n)_HAIL.png")
+            case .wind:     return url(base + "\(wfo)_swody\(n)_WIND.png")
+            }
+        case .three:
+            return risk == .general ? url(base + "\(wfo)_swody3.png") : nil
+        default:
+            // Days 4–8: per-day regional PROB images (unlike national which is combined).
+            return risk == .general ? url(base + "\(wfo)_swody\(n)_PROB.png") : nil
+        }
+    }
+
     // MARK: - Helpers
 
     private static func url(_ string: String) -> URL? {

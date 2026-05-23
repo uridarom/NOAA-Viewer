@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct OutlookImageView: View {
-    @Binding var isLocalView: Bool
+    let isLocalView: Bool
+    let canToggleLocalView: Bool
     let image: UIImage?
+    let onTap: () -> Void
+    let onSwipe: (Int) -> Void  // +1 = next day, -1 = previous day
 
     var body: some View {
         ZStack {
@@ -13,6 +16,7 @@ struct OutlookImageView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
+                    .transition(.opacity)
             } else {
                 ProgressView()
                     .tint(Color.textSecondary)
@@ -36,6 +40,16 @@ struct OutlookImageView: View {
             }
         }
         .aspectRatio(4 / 3, contentMode: .fit)
-        .onTapGesture { isLocalView.toggle() }
+        .gesture(
+            DragGesture(minimumDistance: 30)
+                .onEnded { value in
+                    let h = value.translation.width
+                    let v = value.translation.height
+                    guard abs(h) > abs(v) else { return }
+                    if h < -50 { onSwipe(1) }
+                    else if h > 50 { onSwipe(-1) }
+                }
+        )
+        .onTapGesture { if canToggleLocalView { onTap() } }
     }
 }

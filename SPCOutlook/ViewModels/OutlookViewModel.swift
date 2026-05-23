@@ -1,5 +1,5 @@
 import CoreLocation
-import UIKit
+import SwiftUI
 
 @MainActor
 final class OutlookViewModel: ObservableObject {
@@ -12,6 +12,8 @@ final class OutlookViewModel: ObservableObject {
     @Published var userCoordinate: CLLocationCoordinate2D?
     @Published var wfo: String?
     @Published var localRisks: LocalRisks = .zero
+    @Published var isLocalView: Bool = false
+    @Published var localViewDisabled: Bool = false
 
     private let service          = SPCNetworkService()
     private let locationService  = LocationService()
@@ -20,16 +22,36 @@ final class OutlookViewModel: ObservableObject {
     // MARK: - Initial load
 
     func load(day: OutlookDay, risk: RiskType, bypassCache: Bool = false) async {
-        guard let url = imageURL(for: day, risk: risk) else { return }
+        guard let url = currentImageURL(day: day, risk: risk) else { return }
         isLoading = true
         defer { isLoading = false }
         let policy: URLRequest.CachePolicy = bypassCache ? .reloadIgnoringLocalAndRemoteCacheData
                                                          : .returnCacheDataElseLoad
         do {
-            outlookImage = try await service.fetchImage(from: url, cachePolicy: policy)
+            let image = try await service.fetchImage(from: url, cachePolicy: policy)
+            withAnimation(.easeInOut(duration: 0.3)) { outlookImage = image }
         } catch {
-            // image stays nil; error UI wired in Step 16
+            if isLocalView {
+                // Regional fetch failed — fall back to national, disable local view for session.
+                isLocalView = false
+                localViewDisabled = true
+                showToast("Regional outlook not available for your area.")
+                if let nationalURL = imageURL(for: day, risk: risk) {
+                    if let image = try? await service.fetchImage(from: nationalURL, cachePolicy: policy) {
+                        withAnimation(.easeInOut(duration: 0.3)) { outlookImage = image }
+                    }
+                }
+            }
+            // else: image stays nil; error UI wired in Step 16
         }
+    }
+
+    // MARK: - Local View Toggle
+
+    func toggleLocalView(day: OutlookDay, risk: RiskType) async {
+        guard !localViewDisabled, wfo != nil else { return }
+        isLocalView.toggle()
+        await load(day: day, risk: risk)
     }
 
     func loadDiscussion(day: OutlookDay, bypassCache: Bool = false) async {
@@ -147,12 +169,23 @@ final class OutlookViewModel: ObservableObject {
 
     // MARK: - URL resolution
 
+    // National URL for this (day, risk) combination.
     func imageURL(for day: OutlookDay, risk: RiskType) -> URL? {
         if risk == .general {
             return SPCEndpoints.categoricalImage(day: day)
                 ?? SPCEndpoints.probabilisticImage(day: day, risk: .general)
         }
         return SPCEndpoints.probabilisticImage(day: day, risk: risk)
+    }
+
+    // Returns the regional URL when local view is active and supported,
+    // otherwise returns the national URL.
+    func currentImageURL(day: OutlookDay, risk: RiskType) -> URL? {
+        if isLocalView, let wfo {
+            return SPCEndpoints.regionalImage(day: day, risk: risk, wfo: wfo)
+                ?? imageURL(for: day, risk: risk)
+        }
+        return imageURL(for: day, risk: risk)
     }
 
     // MARK: - Toast

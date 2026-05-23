@@ -4,16 +4,17 @@ struct ContentView: View {
     @StateObject private var viewModel = OutlookViewModel()
     @State private var selectedDay: OutlookDay = .one
     @State private var selectedRisk: RiskType = .general
-    @State private var isLocalView: Bool = false
+    @State private var showSettings = false
 
     var body: some View {
+        NavigationStack {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 HeaderView(
                     lastUpdated: viewModel.lastUpdatedString,
                     nextIssuance: viewModel.nextIssuanceString(for: selectedDay),
                     isRefreshing: viewModel.isRefreshing,
-                    onSettings: {},
+                    onSettings: { showSettings = true },
                     onRefresh: { Task { await viewModel.refresh(day: selectedDay, risk: selectedRisk) } }
                 )
 
@@ -29,10 +30,21 @@ struct ContentView: View {
                         .foregroundStyle(Color.textPrimary)
                     Text(subtitleText)
                         .font(.courier(13))
-                        .foregroundStyle(Color.textSecondary)
+                        .foregroundStyle(subtitleColor)
                 }
 
-                OutlookImageView(isLocalView: $isLocalView, image: viewModel.outlookImage)
+                OutlookImageView(
+                    isLocalView: viewModel.isLocalView,
+                    canToggleLocalView: viewModel.wfo != nil && !viewModel.localViewDisabled,
+                    image: viewModel.outlookImage,
+                    onTap: { Task { await viewModel.toggleLocalView(day: selectedDay, risk: selectedRisk) } },
+                    onSwipe: { delta in
+                        let days = OutlookDay.allCases
+                        guard let idx = days.firstIndex(of: selectedDay) else { return }
+                        let newIdx = max(0, min(days.count - 1, idx + delta))
+                        selectedDay = days[newIdx]
+                    }
+                )
 
                 RiskTabs(selectedRisk: $selectedRisk, selectedDay: selectedDay)
 
@@ -49,6 +61,7 @@ struct ContentView: View {
             .padding(.vertical, 12)
         }
         .background(Color.bgPrimary.ignoresSafeArea())
+        .navigationDestination(isPresented: $showSettings) { SettingsView() }
         .preferredColorScheme(.dark)
         .overlay(alignment: .bottom) { toastOverlay }
         .animation(.easeInOut(duration: 0.25), value: viewModel.toastMessage)
@@ -80,6 +93,7 @@ struct ContentView: View {
         .onChange(of: selectedRisk) { newRisk in
             Task { await viewModel.load(day: selectedDay, risk: newRisk) }
         }
+        } // NavigationStack
     }
 
     @ViewBuilder
@@ -102,10 +116,21 @@ struct ContentView: View {
     }
 
     private var subtitleText: String {
+        if viewModel.isLocalView, let wfo = viewModel.wfo {
+            return "Showing \(wfo) region — tap to return"
+        }
         if selectedDay.isGrouped {
             return "Days 4–8 share a combined outlook"
         }
         return "Tap for local view, swipe for Day \(min(selectedDay.rawValue + 1, 8))"
+    }
+
+    private var subtitleColor: Color {
+        // Grey out the tap hint when local view is unavailable
+        if !viewModel.isLocalView && (viewModel.wfo == nil || viewModel.localViewDisabled) {
+            return Color.textTertiary
+        }
+        return Color.textSecondary
     }
 }
 
