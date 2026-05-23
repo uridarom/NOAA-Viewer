@@ -13,7 +13,11 @@ struct DaySelector: View {
                         isSelected: day == selectedDay,
                         thumbnail: thumbnails[day]
                     )
-                    .onTapGesture { selectedDay = day }
+                    .onTapGesture {
+                        guard day != selectedDay else { return }
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        selectedDay = day
+                    }
                 }
             }
         }

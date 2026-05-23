@@ -2,8 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = OutlookViewModel()
-    @State private var selectedDay: OutlookDay = .one
-    @State private var selectedRisk: RiskType = .general
     @State private var showSettings = false
 
     var body: some View {
@@ -12,15 +10,19 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HeaderView(
                     lastUpdated: viewModel.lastUpdatedString,
-                    nextIssuance: viewModel.nextIssuanceString(for: selectedDay),
+                    nextIssuance: viewModel.nextIssuanceString(for: viewModel.selectedDay),
                     isRefreshing: viewModel.isRefreshing,
                     onSettings: { showSettings = true },
-                    onRefresh: { Task { await viewModel.refresh(day: selectedDay, risk: selectedRisk) } }
+                    onRefresh: {
+                        Task { await viewModel.refresh(day: viewModel.selectedDay,
+                                                       risk: viewModel.selectedRisk) }
+                    }
                 )
 
                 HStack(alignment: .top, spacing: 12) {
-                    LocalRisksCard(localRisks: viewModel.localRisks)
-                    DaySelector(selectedDay: $selectedDay, thumbnails: viewModel.thumbnails)
+                    LocalRisksCard(localRisks: viewModel.localRisks,
+                                   locationDenied: viewModel.locationPermissionDenied)
+                    DaySelector(selectedDay: $viewModel.selectedDay, thumbnails: viewModel.thumbnails)
                         .frame(maxWidth: .infinity)
                 }
 
@@ -37,25 +39,22 @@ struct ContentView: View {
                     isLocalView: viewModel.isLocalView,
                     canToggleLocalView: viewModel.wfo != nil && !viewModel.localViewDisabled,
                     image: viewModel.outlookImage,
-                    onTap: { Task { await viewModel.toggleLocalView(day: selectedDay, risk: selectedRisk) } },
+                    onTap: {
+                        Task { await viewModel.toggleLocalView(day: viewModel.selectedDay,
+                                                               risk: viewModel.selectedRisk) }
+                    },
                     onSwipe: { delta in
                         let days = OutlookDay.allCases
-                        guard let idx = days.firstIndex(of: selectedDay) else { return }
+                        guard let idx = days.firstIndex(of: viewModel.selectedDay) else { return }
                         let newIdx = max(0, min(days.count - 1, idx + delta))
-                        selectedDay = days[newIdx]
+                        viewModel.selectedDay = days[newIdx]
                     }
                 )
 
-                RiskTabs(selectedRisk: $selectedRisk, selectedDay: selectedDay)
+                RiskTabs(selectedRisk: $viewModel.selectedRisk,
+                         selectedDay: viewModel.selectedDay)
 
-                if let discussion = viewModel.discussion {
-                    DiscussionView(discussion: discussion)
-                } else {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.bgCard)
-                        .frame(maxWidth: .infinity, minHeight: 80)
-                        .overlay(ProgressView().tint(Color.textSecondary))
-                }
+                discussionArea
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -67,21 +66,21 @@ struct ContentView: View {
         .animation(.easeInOut(duration: 0.25), value: viewModel.toastMessage)
         .task {
             await withTaskGroup(of: Void.self) { group in
-                group.addTask { await viewModel.load(day: selectedDay, risk: selectedRisk) }
+                group.addTask { await viewModel.backgroundSync() }
                 group.addTask { await viewModel.loadThumbnails() }
-                group.addTask { await viewModel.loadDiscussion(day: selectedDay) }
                 group.addTask { await viewModel.startLocationServices() }
             }
         }
-        .onChange(of: selectedDay) { newDay in
-            let needsReset = (newDay == .three || newDay.isGrouped) && selectedRisk != .general
+        .onChange(of: viewModel.selectedDay) { newDay in
+            let needsReset = (newDay == .three || newDay.isGrouped) && viewModel.selectedRisk != .general
             let targetRisk: RiskType
             if needsReset {
-                selectedRisk = .general
+                viewModel.selectedRisk = .general
                 targetRisk = .general
             } else {
-                targetRisk = selectedRisk
+                targetRisk = viewModel.selectedRisk
             }
+            PersistenceStore.save(selectedDay: newDay, selectedRisk: targetRisk)
             Task {
                 await withTaskGroup(of: Void.self) { group in
                     group.addTask { await viewModel.load(day: newDay, risk: targetRisk) }
@@ -90,43 +89,75 @@ struct ContentView: View {
                 }
             }
         }
-        .onChange(of: selectedRisk) { newRisk in
-            Task { await viewModel.load(day: selectedDay, risk: newRisk) }
+        .onChange(of: viewModel.selectedRisk) { newRisk in
+            PersistenceStore.save(selectedDay: viewModel.selectedDay, selectedRisk: newRisk)
+            Task { await viewModel.load(day: viewModel.selectedDay, risk: newRisk) }
         }
         } // NavigationStack
     }
 
+    // MARK: - Discussion area
+
+    @ViewBuilder
+    private var discussionArea: some View {
+        if let discussion = viewModel.discussion {
+            DiscussionView(discussion: discussion)
+        } else if viewModel.isInitialLoadComplete {
+            // Load completed but no data (offline + no cache)
+            noDataView
+        } else {
+            // Still loading
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.bgCard)
+                .frame(maxWidth: .infinity, minHeight: 80)
+                .overlay(ProgressView().tint(Color.textSecondary))
+        }
+    }
+
+    @ViewBuilder
+    private var noDataView: some View {
+        RoundedRectangle(cornerRadius: 8)
+            .fill(Color.bgCard)
+            .frame(maxWidth: .infinity, minHeight: 80)
+            .overlay(
+                Text("No outlook available — pull to retry")
+                    .font(.courier(13))
+                    .foregroundStyle(Color.textSecondary)
+                    .multilineTextAlignment(.center)
+                    .padding(12)
+            )
+    }
+
+    // MARK: - Toast
+
     @ViewBuilder
     private var toastOverlay: some View {
         if let message = viewModel.toastMessage {
-            Text(message)
-                .font(.courier(13))
-                .foregroundStyle(Color.textPrimary)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 10)
-                .background(Color.bgTabSelected)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+            ToastView(message: message)
                 .padding(.bottom, 32)
                 .transition(.opacity.combined(with: .move(edge: .bottom)))
         }
     }
 
+    // MARK: - Computed strings
+
     private var outlookTitle: String {
-        selectedDay.isGrouped ? "Day 4–8 Outlook" : "Day \(selectedDay.rawValue) Convective Outlook"
+        viewModel.selectedDay.isGrouped
+            ? "Day 4–8 Outlook"
+            : "Day \(viewModel.selectedDay.rawValue) Convective Outlook"
     }
 
     private var subtitleText: String {
         if viewModel.isLocalView, let wfo = viewModel.wfo {
             return "Showing \(wfo) region — tap to return"
         }
-        if selectedDay.isGrouped {
+        if viewModel.selectedDay.isGrouped {
             return "Days 4–8 share a combined outlook"
         }
-        return "Tap for local view, swipe for Day \(min(selectedDay.rawValue + 1, 8))"
+        return "Tap for local view, swipe for Day \(min(viewModel.selectedDay.rawValue + 1, 8))"
     }
 
     private var subtitleColor: Color {
-        // Grey out the tap hint when local view is unavailable
         if !viewModel.isLocalView && (viewModel.wfo == nil || viewModel.localViewDisabled) {
             return Color.textTertiary
         }

@@ -69,8 +69,8 @@ final class LocalRiskCalculatorTests: XCTestCase {
         let coord = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         let risks = LocalRiskCalculator.localRisks(at: coord, tornado: col, hail: nil, wind: nil)
         XCTAssertEqual(risks.tornado, 5)
-        XCTAssertEqual(risks.hail, 0)
-        XCTAssertEqual(risks.wind, 0)
+        XCTAssertNil(risks.hail)   // nil collection → nil (GeoJSON unavailable)
+        XCTAssertNil(risks.wind)
     }
 
     func testProbabilisticLabel_02Percent() {
@@ -125,11 +125,11 @@ final class LocalRiskCalculatorTests: XCTestCase {
 
     // MARK: - localRisks — nil collection
 
-    func testNilCollectionReturnsZero() {
+    func testNilCollectionReturnsNil() {
         let coord = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         let risks = LocalRiskCalculator.localRisks(at: coord, tornado: nil, hail: nil, wind: nil)
-        XCTAssertEqual(risks.tornado, 0)
-        XCTAssertEqual(risks.hail, 0)
-        XCTAssertEqual(risks.wind, 0)
+        XCTAssertNil(risks.tornado)   // nil collection means GeoJSON was unavailable
+        XCTAssertNil(risks.hail)
+        XCTAssertNil(risks.wind)
     }
 }

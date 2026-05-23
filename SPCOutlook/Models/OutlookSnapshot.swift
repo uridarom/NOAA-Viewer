@@ -1,11 +1,11 @@
 import Foundation
 
-struct ParsedSection {
+struct ParsedSection: Codable {
     let title: String
     let body: String
 }
 
-struct ParsedDiscussion {
+struct ParsedDiscussion: Codable {
     let headline: String
     let issuance: Date?
     let sections: [ParsedSection]

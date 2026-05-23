@@ -38,6 +38,8 @@
 		31CEF799220142A093D170D3 /* LocalRiskCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C1EF750E4E0BA787C4CD /* LocalRiskCalculator.swift */; };
 		C4EABE6791184817A7999EAB /* SPCProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BE7328DF5B409F9A812EC8 /* SPCProjection.swift */; };
 		408551D9AE8F499689E310F4 /* LocalRiskCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4DF9B5AEDB43E3BA003229 /* LocalRiskCalculatorTests.swift */; };
+		7F4E2C91B35A84F6D120CE47 /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A9F42E1B74D62A8F23B91 /* PersistenceStore.swift */; };
+		9D3F17A52C4B8E61F0A72D83 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C2E91A37F4D06C9B14E72 /* ToastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		B7F7C1EF750E4E0BA787C4CD /* LocalRiskCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRiskCalculator.swift; sourceTree = "<group>"; };
 		76BE7328DF5B409F9A812EC8 /* SPCProjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCProjection.swift; sourceTree = "<group>"; };
 		2D4DF9B5AEDB43E3BA003229 /* LocalRiskCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRiskCalculatorTests.swift; sourceTree = "<group>"; };
+		3C8A9F42E1B74D62A8F23B91 /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		5B8C2E91A37F4D06C9B14E72 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -173,6 +177,7 @@
 				8C7013AF4D7AB28028560357 /* OutlookImageView.swift */,
 				A4FD48185147D5204AD0CB8D /* RiskTabs.swift */,
 				18C9700A9AB97D717C2AA85E /* SettingsView.swift */,
+				5B8C2E91A37F4D06C9B14E72 /* ToastView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				80B446431EBD92066B909460 /* IssuanceSchedule.swift */,
 				B7F7C1EF750E4E0BA787C4CD /* LocalRiskCalculator.swift */,
 				622FCDE5E97249AA88E8CA5F /* LocationService.swift */,
+				3C8A9F42E1B74D62A8F23B91 /* PersistenceStore.swift */,
 				B25E29E688945902D0DA0BAA /* SPCEndpoints.swift */,
 				66EC8A4E6B59BF2F3A0F75C7 /* SPCNetworkService.swift */,
 				76BE7328DF5B409F9A812EC8 /* SPCProjection.swift */,
@@ -308,6 +314,8 @@
 				5E50ABEA7864589312FE88A1 /* SPCEndpoints.swift in Sources */,
 				A31660E89F9F608494B9363F /* SPCNetworkService.swift in Sources */,
 				C4EABE6791184817A7999EAB /* SPCProjection.swift in Sources */,
+				7F4E2C91B35A84F6D120CE47 /* PersistenceStore.swift in Sources */,
+				9D3F17A52C4B8E61F0A72D83 /* ToastView.swift in Sources */,
 				97295862A1C8A964EE32B8E7 /* SPCOutlookApp.swift in Sources */,
 				3D39FCCCAF5E63E5DA996DA5 /* SettingsView.swift in Sources */,
 				5A85122BF2934F51A8C13AA8 /* WFOResolver.swift in Sources */,

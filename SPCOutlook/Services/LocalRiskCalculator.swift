@@ -50,12 +50,13 @@ enum LocalRiskCalculator {
 
     // MARK: - Private
 
-    // Returns (probability%, isSignificant). SIGN features are excluded from the
-    // probability ranking but set the significant flag — the displayed % is the
-    // underlying tier (10%, 15%, etc.) not the SIGN overlay.
+    // Returns (probability%, isSignificant).
+    // nil probability means the GeoJSON collection was unavailable (fetch failed).
+    // 0 means the fetch succeeded but the user is outside all risk polygons.
+    // SIGN features set the significant flag without affecting the probability tier.
     private static func probabilityAndSignificant(at coord: CLLocationCoordinate2D,
-                                                  from collection: GeoJSONFeatureCollection?) -> (Int, Bool) {
-        guard let collection else { return (0, false) }
+                                                  from collection: GeoJSONFeatureCollection?) -> (Int?, Bool) {
+        guard let collection else { return (nil, false) }
         let matching = collection.features.filter { contains(coord, feature: $0) }
         let hasSign = matching.contains { $0.properties.label.uppercased() == "SIGN" }
         let best = matching

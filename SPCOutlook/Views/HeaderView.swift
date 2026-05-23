@@ -40,6 +40,8 @@ struct HeaderView: View {
             .frame(width: 36, height: 36)
             .background(Color.bgCard)
             .clipShape(RoundedRectangle(cornerRadius: 6))
+            .frame(width: 44, height: 44)
+            .contentShape(Rectangle())
         }
         .disabled(isRefreshing)
     }
@@ -52,6 +54,8 @@ struct HeaderView: View {
                 .frame(width: 36, height: 36)
                 .background(Color.bgCard)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
         }
     }
 }

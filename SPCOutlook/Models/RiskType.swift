@@ -1,6 +1,6 @@
 import Foundation
 
-enum RiskType: String, CaseIterable, Identifiable {
+enum RiskType: String, CaseIterable, Identifiable, Codable {
     case general, tornado, hail, wind
 
     var id: String { rawValue }

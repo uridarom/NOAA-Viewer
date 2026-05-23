@@ -1,11 +1,12 @@
 import Foundation
 
-struct LocalRisks {
-    let tornado: Int
+struct LocalRisks: Codable {
+    /// nil = GeoJSON fetch failed for this hazard (show "---"); 0 = in area but below any threshold
+    let tornado: Int?
     let tornadoSignificant: Bool
-    let hail: Int
+    let hail: Int?
     let hailSignificant: Bool
-    let wind: Int
+    let wind: Int?
     let windSignificant: Bool
     let flood: Int?
 

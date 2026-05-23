@@ -21,7 +21,8 @@ struct RiskTabs: View {
         let isSelected = selectedRisk == risk
         let disabled   = isDisabled(risk)
         Button {
-            guard !disabled else { return }
+            guard !disabled, risk != selectedRisk else { return }
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             selectedRisk = risk
         } label: {
             Text(risk.label)

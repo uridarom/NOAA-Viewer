@@ -3,6 +3,8 @@ import SwiftUI
 
 @MainActor
 final class OutlookViewModel: ObservableObject {
+    @Published var selectedDay: OutlookDay
+    @Published var selectedRisk: RiskType
     @Published var outlookImage: UIImage?
     @Published var thumbnails: [OutlookDay: UIImage] = [:]
     @Published var discussion: ParsedDiscussion?
@@ -11,15 +13,72 @@ final class OutlookViewModel: ObservableObject {
     @Published var toastMessage: String? = nil
     @Published var userCoordinate: CLLocationCoordinate2D?
     @Published var wfo: String?
-    @Published var localRisks: LocalRisks = .zero
+    @Published var localRisks: LocalRisks
     @Published var isLocalView: Bool = false
     @Published var localViewDisabled: Bool = false
+    /// Set to true once backgroundSync() completes (success or failure), so the UI
+    /// can switch from a loading spinner to a "no data" empty state.
+    @Published var isInitialLoadComplete: Bool = false
+    /// True when the user has denied or restricted location access.
+    @Published var locationPermissionDenied: Bool = false
 
     private let service          = SPCNetworkService()
     private let locationService  = LocationService()
-    private var lastSeenIssuanceAt: Date? = nil
+    private var lastSeenIssuanceAt: Date?
 
-    // MARK: - Initial load
+    // MARK: - Init (hydrates from file cache before any network call)
+
+    init() {
+        let day  = PersistenceStore.loadSelectedDay()  ?? .one
+        let risk = PersistenceStore.loadSelectedRisk() ?? .general
+        _selectedDay  = Published(initialValue: day)
+        _selectedRisk = Published(initialValue: risk)
+        _localRisks   = Published(initialValue: PersistenceStore.loadLocalRisks() ?? .zero)
+        _discussion   = Published(initialValue: PersistenceStore.loadDiscussion())
+        _outlookImage = Published(initialValue: PersistenceStore.loadCategoricalImage(day: day))
+        lastSeenIssuanceAt = PersistenceStore.loadLastUpdatedAt()
+    }
+
+    // MARK: - Background Sync
+
+    func backgroundSync() async {
+        defer { isInitialLoadComplete = true }
+
+        guard let checkURL = imageURL(for: selectedDay, risk: .general) else { return }
+        let serverDate = await service.lastModified(at: checkURL)
+
+        // Offline with existing cached data — keep the cache.
+        if serverDate == nil, lastSeenIssuanceAt != nil { return }
+
+        let isNewer = serverDate.map { $0 > (lastSeenIssuanceAt ?? .distantPast) } ?? true
+        let cacheIncomplete = outlookImage == nil || discussion == nil
+
+        guard isNewer || cacheIncomplete else { return }
+
+        await withTaskGroup(of: Void.self) { group in
+            if isNewer || outlookImage == nil {
+                group.addTask {
+                    await self.load(day: self.selectedDay, risk: self.selectedRisk,
+                                    bypassCache: isNewer)
+                }
+            }
+            if isNewer || discussion == nil {
+                group.addTask {
+                    await self.loadDiscussion(day: self.selectedDay, bypassCache: isNewer)
+                }
+            }
+            if isNewer, self.selectedDay == .one {
+                group.addTask { await self.loadLocalRisks() }
+            }
+        }
+
+        if let date = serverDate, isNewer {
+            lastSeenIssuanceAt = date
+            PersistenceStore.save(lastUpdatedAt: date)
+        }
+    }
+
+    // MARK: - Image load
 
     func load(day: OutlookDay, risk: RiskType, bypassCache: Bool = false) async {
         guard let url = currentImageURL(day: day, risk: risk) else { return }
@@ -30,9 +89,11 @@ final class OutlookViewModel: ObservableObject {
         do {
             let image = try await service.fetchImage(from: url, cachePolicy: policy)
             withAnimation(.easeInOut(duration: 0.3)) { outlookImage = image }
+            if risk == .general, !isLocalView {
+                PersistenceStore.saveCategoricalImage(image, day: day)
+            }
         } catch {
             if isLocalView {
-                // Regional fetch failed — fall back to national, disable local view for session.
                 isLocalView = false
                 localViewDisabled = true
                 showToast("Regional outlook not available for your area.")
@@ -42,7 +103,7 @@ final class OutlookViewModel: ObservableObject {
                     }
                 }
             }
-            // else: image stays nil; error UI wired in Step 16
+            // else: network error — image stays nil or cached; empty state shown by ContentView
         }
     }
 
@@ -54,43 +115,61 @@ final class OutlookViewModel: ObservableObject {
         await load(day: day, risk: risk)
     }
 
+    // MARK: - Discussion
+
     func loadDiscussion(day: OutlookDay, bypassCache: Bool = false) async {
         let policy: URLRequest.CachePolicy = bypassCache ? .reloadIgnoringLocalAndRemoteCacheData
                                                          : .returnCacheDataElseLoad
         do {
             let text = try await service.fetchDiscussion(day: day, cachePolicy: policy)
-            discussion = DiscussionParser.parse(text)
+            let parsed = DiscussionParser.parse(text)
+            discussion = parsed
+            PersistenceStore.save(discussion: parsed)
         } catch {
-            // discussion stays nil; error UI wired in Step 16
+            // discussion stays cached; empty state shown by ContentView when nil
         }
     }
 
     // MARK: - Location & WFO
 
     func startLocationServices() async {
-        guard let coord = await locationService.requestLocation() else { return }
+        guard let coord = await locationService.requestLocation() else {
+            // Update denied flag — drives the "Enable location" hint in LocalRisksCard
+            let status = locationService.authorizationStatus
+            locationPermissionDenied = (status == .denied || status == .restricted)
+            return
+        }
+        locationPermissionDenied = false
         userCoordinate = coord
-        // Resolve WFO and compute local risks in parallel, then assign on main actor.
         async let wfoFetch   = WFOResolver.resolve(coordinate: coord)
         async let risksFetch = computeRisks(at: coord)
         let (resolvedWFO, risks) = await (wfoFetch, risksFetch)
-        wfo        = resolvedWFO
-        localRisks = risks
+        wfo = resolvedWFO
+        if let risks {
+            localRisks = risks
+            PersistenceStore.save(localRisks: risks)
+        }
     }
 
     // MARK: - Local Risks
 
     func loadLocalRisks() async {
         guard let coord = userCoordinate else { return }
-        localRisks = await computeRisks(at: coord)
+        if let risks = await computeRisks(at: coord) {
+            localRisks = risks
+            PersistenceStore.save(localRisks: risks)
+        }
     }
 
-    // Fetches all three GeoJSON layers for Day 1 in parallel and runs PIP.
-    private func computeRisks(at coord: CLLocationCoordinate2D) async -> LocalRisks {
+    // Returns nil when ALL three GeoJSON fetches fail (e.g. fully offline),
+    // so we don't overwrite a previously-cached valid value with all-dashes.
+    // When at least one succeeds, individual nil fields signal per-hazard failures.
+    private func computeRisks(at coord: CLLocationCoordinate2D) async -> LocalRisks? {
         async let tornado = fetchGeoJSONSafe(day: .one, risk: .tornado)
         async let hail    = fetchGeoJSONSafe(day: .one, risk: .hail)
         async let wind    = fetchGeoJSONSafe(day: .one, risk: .wind)
         let (t, h, w) = await (tornado, hail, wind)
+        guard t != nil || h != nil || w != nil else { return nil }
         return LocalRiskCalculator.localRisks(at: coord, tornado: t, hail: h, wind: w)
     }
 
@@ -106,7 +185,6 @@ final class OutlookViewModel: ObservableObject {
         isRefreshing = true
         defer { isRefreshing = false }
 
-        // HEAD check: has the server's content changed since the last time we fetched?
         var serverDate: Date? = nil
         if let checkURL = imageURL(for: day, risk: risk) {
             serverDate = await service.lastModified(at: checkURL)
@@ -119,13 +197,26 @@ final class OutlookViewModel: ObservableObject {
             return
         }
 
-        // Fresh fetch, bypassing URLCache
+        let imageWasNilBefore = outlookImage == nil
+
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.load(day: day, risk: risk, bypassCache: true) }
             group.addTask { await self.loadDiscussion(day: day, bypassCache: true) }
             if day == .one { group.addTask { await self.loadLocalRisks() } }
         }
-        lastSeenIssuanceAt = serverDate ?? Date()
+
+        // If image was nil before AND is still nil after, the network is unreachable.
+        if imageWasNilBefore, outlookImage == nil {
+            showToast("No connection — try again later")
+            return
+        }
+
+        if let date = serverDate {
+            lastSeenIssuanceAt = date
+            PersistenceStore.save(lastUpdatedAt: date)
+        } else {
+            lastSeenIssuanceAt = Date()
+        }
         showToast("Updated")
     }
 
@@ -169,7 +260,6 @@ final class OutlookViewModel: ObservableObject {
 
     // MARK: - URL resolution
 
-    // National URL for this (day, risk) combination.
     func imageURL(for day: OutlookDay, risk: RiskType) -> URL? {
         if risk == .general {
             return SPCEndpoints.categoricalImage(day: day)
@@ -178,8 +268,6 @@ final class OutlookViewModel: ObservableObject {
         return SPCEndpoints.probabilisticImage(day: day, risk: risk)
     }
 
-    // Returns the regional URL when local view is active and supported,
-    // otherwise returns the national URL.
     func currentImageURL(day: OutlookDay, risk: RiskType) -> URL? {
         if isLocalView, let wfo {
             return SPCEndpoints.regionalImage(day: day, risk: risk, wfo: wfo)
