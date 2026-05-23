@@ -16,7 +16,6 @@ struct OutlookImageView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .transition(.opacity)
             } else {
                 ProgressView()
                     .tint(Color.textSecondary)

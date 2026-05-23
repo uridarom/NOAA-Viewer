@@ -35,7 +35,7 @@ struct RiskTabs: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(isSelected && !disabled ? Color.bgTabSelected : Color.bgTabUnselected)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .clipShape(RoundedRectangle(cornerRadius: 2))
         }
     }
 }

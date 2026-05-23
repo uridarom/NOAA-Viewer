@@ -88,7 +88,7 @@ final class OutlookViewModel: ObservableObject {
                                                          : .returnCacheDataElseLoad
         do {
             let image = try await service.fetchImage(from: url, cachePolicy: policy)
-            withAnimation(.easeInOut(duration: 0.3)) { outlookImage = image }
+            outlookImage = image
             if risk == .general, !isLocalView {
                 PersistenceStore.saveCategoricalImage(image, day: day)
             }
@@ -99,7 +99,7 @@ final class OutlookViewModel: ObservableObject {
                 showToast("Regional outlook not available for your area.")
                 if let nationalURL = imageURL(for: day, risk: risk) {
                     if let image = try? await service.fetchImage(from: nationalURL, cachePolicy: policy) {
-                        withAnimation(.easeInOut(duration: 0.3)) { outlookImage = image }
+                        outlookImage = image
                     }
                 }
             }

@@ -8,10 +8,11 @@ struct LocalRisksCard: View {
     let locationDenied: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 2) {
             Text("Local Risks")
                 .font(.courier(16, weight: .bold))
                 .foregroundStyle(Color.textPrimary)
+                .padding(.bottom, 4)
 
             riskRow("Hail:",    value: localRisks.hail)
             riskRow("Tornado:", value: localRisks.tornado)
@@ -31,9 +32,10 @@ struct LocalRisksCard: View {
                 }
             }
         }
+        .fixedSize(horizontal: true, vertical: false)
         .padding(12)
         .background(Color.bgCard)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .clipShape(RoundedRectangle(cornerRadius: 3))
     }
 
     @ViewBuilder
@@ -43,7 +45,7 @@ struct LocalRisksCard: View {
             Text(label)
                 .font(.courier(14))
                 .foregroundStyle(Color.textPrimary)
-            Spacer()
+            Spacer(minLength: 0)
             Text(text)
                 .font(.courier(14))
                 .foregroundStyle(color)
@@ -56,7 +58,7 @@ struct LocalRisksCard: View {
             Text("Flood:")
                 .font(.courier(14))
                 .foregroundStyle(Color.textPrimary)
-            Spacer()
+            Spacer(minLength: 0)
             if locationDenied {
                 Text("--%")
                     .font(.courier(14))

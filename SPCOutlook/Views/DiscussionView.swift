@@ -15,20 +15,20 @@ struct DiscussionView: View {
                 sectionView(discussion.sections[idx])
             }
         }
-        .padding(12)
+        .padding(40)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.bgCard)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .clipShape(RoundedRectangle(cornerRadius: 3))
     }
 
     @ViewBuilder
     private func sectionView(_ section: ParsedSection) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(section.title)
-                .font(.courier(14, weight: .bold))
+                .font(.courier(12, weight: .bold))
                 .foregroundStyle(Color.textPrimary)
             Text(section.body)
-                .font(.courier(14))
+                .font(.courier(12))
                 .foregroundStyle(Color.textSecondary)
         }
     }

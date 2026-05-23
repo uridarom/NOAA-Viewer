@@ -7,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
         ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4) {
                 HeaderView(
                     lastUpdated: viewModel.lastUpdatedString,
                     nextIssuance: viewModel.nextIssuanceString(for: viewModel.selectedDay),
@@ -56,7 +56,7 @@ struct ContentView: View {
 
                 discussionArea
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 4)
             .padding(.vertical, 12)
         }
         .background(Color.bgPrimary.ignoresSafeArea())
@@ -116,7 +116,7 @@ struct ContentView: View {
 
     @ViewBuilder
     private var noDataView: some View {
-        RoundedRectangle(cornerRadius: 8)
+        RoundedRectangle(cornerRadius: 3)
             .fill(Color.bgCard)
             .frame(maxWidth: .infinity, minHeight: 80)
             .overlay(

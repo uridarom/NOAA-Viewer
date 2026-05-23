@@ -10,7 +10,7 @@ struct HeaderView: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("SPC SEVERE WEATHER OUTLOOK")
+                Text("SPC OUTLOOK")
                     .font(.courier(22, weight: .bold))
                     .foregroundStyle(Color.textPrimary)
                 Text("Last Updated: \(lastUpdated) (next \(nextIssuance))")
@@ -18,7 +18,7 @@ struct HeaderView: View {
                     .foregroundStyle(Color.textSecondary)
             }
             Spacer()
-            HStack(spacing: 8) {
+            HStack(spacing: 3) {
                 iconButton("gearshape", action: onSettings)
                 refreshButton
             }

@@ -6,7 +6,7 @@ struct DaySelector: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
+            HStack(spacing: 4) {
                 ForEach(OutlookDay.allCases) { day in
                     DayCell(
                         day: day,
@@ -30,29 +30,30 @@ private struct DayCell: View {
     let thumbnail: UIImage?
 
     var body: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 10) {
             Text(day.title)
                 .font(.courier(13))
                 .foregroundStyle(Color.textSecondary)
+                .padding(.top, 2)
 
             ZStack {
-                RoundedRectangle(cornerRadius: 4)
+                RoundedRectangle(cornerRadius: 2)
                     .fill(Color.bgCard)
 
                 if let thumbnail {
                     Image(uiImage: thumbnail)
                         .resizable()
                         .scaledToFill()
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                        .clipShape(RoundedRectangle(cornerRadius: 2))
                 } else {
                     Text("MAP")
-                        .font(.courier(10))
+                        .font(.courier(12))
                         .foregroundStyle(Color.textTertiary)
                 }
             }
-            .frame(width: 90, height: 64)
+            .frame(width: 90, height: 90)
         }
-        .frame(width: 110)
+        .frame(width: 140)
         .opacity(isSelected ? 1.0 : 0.45)
     }
 }
