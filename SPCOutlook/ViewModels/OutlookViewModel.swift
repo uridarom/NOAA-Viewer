@@ -161,21 +161,28 @@ final class OutlookViewModel: ObservableObject {
         }
     }
 
-    // Returns nil when ALL three GeoJSON fetches fail (e.g. fully offline),
+    // Returns nil when ALL three SPC GeoJSON fetches fail (e.g. fully offline),
     // so we don't overwrite a previously-cached valid value with all-dashes.
     // When at least one succeeds, individual nil fields signal per-hazard failures.
+    // Flood is fetched in parallel from WPC; its failure is non-fatal (shows "–––%").
     private func computeRisks(at coord: CLLocationCoordinate2D) async -> LocalRisks? {
         async let tornado = fetchGeoJSONSafe(day: .one, risk: .tornado)
         async let hail    = fetchGeoJSONSafe(day: .one, risk: .hail)
         async let wind    = fetchGeoJSONSafe(day: .one, risk: .wind)
-        let (t, h, w) = await (tornado, hail, wind)
+        async let flood   = fetchWPCEROSafe()
+        let (t, h, w, f) = await (tornado, hail, wind, flood)
         guard t != nil || h != nil || w != nil else { return nil }
-        return LocalRiskCalculator.localRisks(at: coord, tornado: t, hail: h, wind: w)
+        return LocalRiskCalculator.localRisks(at: coord, tornado: t, hail: h, wind: w, flood: f)
     }
 
     private func fetchGeoJSONSafe(day: OutlookDay, risk: RiskType) async -> GeoJSONFeatureCollection? {
         guard let url = SPCEndpoints.geoJSON(day: day, risk: risk) else { return nil }
         return try? await service.fetchGeoJSON(from: url)
+    }
+
+    private func fetchWPCEROSafe() async -> WPCFeatureCollection? {
+        guard let url = WPCEndpoints.eroDay1GeoJSON else { return nil }
+        return try? await service.fetchWPCGeoJSON(from: url)
     }
 
     // MARK: - Manual refresh

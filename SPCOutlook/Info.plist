@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.uridarom.SPCOutlook.refresh</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -20,6 +24,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to show severe weather risks at your location.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationIsSceneConfigurationRequired</key>
@@ -27,8 +33,12 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Used to show severe weather risks at your location.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>audio</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UIRequiredDeviceCapabilities</key>

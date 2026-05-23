@@ -58,10 +58,15 @@ struct ContentView: View {
 
                 discussionArea
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal, 12)
             .padding(.vertical, 12)
         }
         .background(Color.bgPrimary.ignoresSafeArea())
+        .overlay(alignment: .top) {
+            Color.bgPrimary
+                .ignoresSafeArea(edges: .top)
+                .frame(height: 0)
+        }
         .navigationDestination(isPresented: $showSettings) { SettingsView() }
         .preferredColorScheme(.dark)
         .overlay(alignment: .bottom) { toastOverlay }

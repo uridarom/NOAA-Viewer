@@ -6,22 +6,42 @@ enum LocalRiskCalculator {
         at coord: CLLocationCoordinate2D,
         tornado: GeoJSONFeatureCollection?,
         hail: GeoJSONFeatureCollection?,
-        wind: GeoJSONFeatureCollection?
+        wind: GeoJSONFeatureCollection?,
+        flood: WPCFeatureCollection? = nil
     ) -> LocalRisks {
         let (tornPct, tornSign) = probabilityAndSignificant(at: coord, from: tornado)
         let (hailPct, hailSign) = probabilityAndSignificant(at: coord, from: hail)
         let (windPct, windSign) = probabilityAndSignificant(at: coord, from: wind)
+        let floodPct            = floodProbability(at: coord, from: flood)
         return LocalRisks(tornado: tornPct, tornadoSignificant: tornSign,
                           hail: hailPct, hailSignificant: hailSign,
                           wind: windPct, windSignificant: windSign,
-                          flood: nil)
+                          flood: floodPct)
+    }
+
+    /// Returns the highest WPC ERO probability at `coord`, or nil if the collection
+    /// was unavailable (fetch failed), or 0 if the point is outside all polygons.
+    static func floodProbability(at coord: CLLocationCoordinate2D,
+                                 from collection: WPCFeatureCollection?) -> Int? {
+        guard let collection else { return nil }
+        let best = collection.features
+            .filter { feature in
+                guard let geometry = feature.geometry else { return false }
+                return containsGeometry(coord, geometry: geometry)
+            }
+            .max(by: { $0.properties.rank < $1.properties.rank })
+        return best?.properties.probability ?? 0
     }
 
     // MARK: - Internal (accessible from tests)
 
     /// True if `coord` falls inside `feature` (exterior ring) but not inside any hole.
     static func contains(_ coord: CLLocationCoordinate2D, feature: GeoJSONFeature) -> Bool {
-        for polygon in feature.geometry.polygons {
+        containsGeometry(coord, geometry: feature.geometry)
+    }
+
+    static func containsGeometry(_ coord: CLLocationCoordinate2D, geometry: GeoJSONGeometry) -> Bool {
+        for polygon in geometry.polygons {
             guard !polygon.isEmpty else { continue }
             let inExterior = raycast(lat: coord.latitude, lon: coord.longitude, ring: polygon[0])
             let inHole     = polygon.dropFirst().contains {

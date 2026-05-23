@@ -5,22 +5,30 @@ struct DaySelector: View {
     let thumbnails: [OutlookDay: UIImage]
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 4) {
-                ForEach(OutlookDay.allCases) { day in
-                    DayCell(
-                        day: day,
-                        isSelected: day == selectedDay,
-                        thumbnail: thumbnails[day]
-                    )
-                    .onTapGesture {
-                        guard day != selectedDay else { return }
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                        selectedDay = day
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 4) {
+                    ForEach(OutlookDay.allCases) { day in
+                        DayCell(
+                            day: day,
+                            isSelected: day == selectedDay,
+                            thumbnail: thumbnails[day]
+                        )
+                        .id(day)
+                        .onTapGesture {
+                            guard day != selectedDay else { return }
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            selectedDay = day
+                        }
                     }
                 }
+                .padding(8)
             }
-            .padding(8)
+            .onChange(of: selectedDay) { newDay in
+                withAnimation {
+                    proxy.scrollTo(newDay, anchor: nil)
+                }
+            }
         }
         .background(Color.bgCard)
         .clipShape(RoundedRectangle(cornerRadius: 3))
