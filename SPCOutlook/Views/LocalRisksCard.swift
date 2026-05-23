@@ -8,11 +8,12 @@ struct LocalRisksCard: View {
     let locationDenied: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 1) {
             Text("Local Risks")
-                .font(.courier(16, weight: .bold))
+                .font(.courier(14, weight: .bold))
                 .foregroundStyle(Color.textPrimary)
                 .padding(.bottom, 4)
+                .padding(.trailing, 8)
 
             riskRow("Hail:",    value: localRisks.hail)
             riskRow("Tornado:", value: localRisks.tornado)
@@ -43,11 +44,11 @@ struct LocalRisksCard: View {
         let (text, color) = riskDisplay(value)
         HStack {
             Text(label)
-                .font(.courier(14))
+                .font(.courier(12))
                 .foregroundStyle(Color.textPrimary)
             Spacer(minLength: 0)
             Text(text)
-                .font(.courier(14))
+                .font(.courier(12))
                 .foregroundStyle(color)
         }
     }
@@ -56,20 +57,20 @@ struct LocalRisksCard: View {
     private var floodRow: some View {
         HStack {
             Text("Flood:")
-                .font(.courier(14))
+                .font(.courier(12))
                 .foregroundStyle(Color.textPrimary)
             Spacer(minLength: 0)
             if locationDenied {
                 Text("--%")
-                    .font(.courier(14))
+                    .font(.courier(12))
                     .foregroundStyle(Color.textTertiary)
             } else if let flood = localRisks.flood {
                 Text("\(flood)%")
-                    .font(.courier(14))
+                    .font(.courier(12))
                     .foregroundStyle(Color.riskColor(for: flood))
             } else {
                 Text("--%")
-                    .font(.courier(14))
+                    .font(.courier(12))
                     .foregroundStyle(Color.textTertiary)
             }
         }

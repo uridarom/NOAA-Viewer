@@ -7,7 +7,7 @@ extension Color {
     static let bgTabUnselected = Color(hex: "0F0F0F")
 
     static let textPrimary    = Color(hex: "FFFFFF")
-    static let textSecondary  = Color(hex: "A0A0A0")
+    static let textSecondary  = Color(hex: "FFFFFF")
     static let textTertiary   = Color(hex: "5A5A5A")
 
     static let accentRisk     = Color(hex: "E89B9B")

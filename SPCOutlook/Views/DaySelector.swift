@@ -20,7 +20,10 @@ struct DaySelector: View {
                     }
                 }
             }
+            .padding(8)
         }
+        .background(Color.bgCard)
+        .clipShape(RoundedRectangle(cornerRadius: 3))
     }
 }
 
@@ -34,11 +37,10 @@ private struct DayCell: View {
             Text(day.title)
                 .font(.courier(13))
                 .foregroundStyle(Color.textSecondary)
-                .padding(.top, 2)
 
             ZStack {
                 RoundedRectangle(cornerRadius: 2)
-                    .fill(Color.bgCard)
+                    .fill(Color.bgPrimary)
 
                 if let thumbnail {
                     Image(uiImage: thumbnail)
@@ -51,9 +53,9 @@ private struct DayCell: View {
                         .foregroundStyle(Color.textTertiary)
                 }
             }
-            .frame(width: 90, height: 90)
+            .frame(width: 90, height: 61)
         }
-        .frame(width: 140)
+        .frame(width: 93)
         .opacity(isSelected ? 1.0 : 0.45)
     }
 }

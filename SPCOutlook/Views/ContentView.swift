@@ -19,20 +19,22 @@ struct ContentView: View {
                     }
                 )
 
-                HStack(alignment: .top, spacing: 12) {
+                HStack(alignment: .top, spacing: 6) {
                     LocalRisksCard(localRisks: viewModel.localRisks,
                                    locationDenied: viewModel.locationPermissionDenied)
                     DaySelector(selectedDay: $viewModel.selectedDay, thumbnails: viewModel.thumbnails)
                         .frame(maxWidth: .infinity)
+                        .padding(.bottom, 10)
                 }
 
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(outlookTitle)
-                        .font(.courier(16, weight: .bold))
+                        .font(.courier(14, weight: .bold))
                         .foregroundStyle(Color.textPrimary)
                     Text(subtitleText)
-                        .font(.courier(13))
+                        .font(.courier(12))
                         .foregroundStyle(subtitleColor)
+                        .padding(.bottom, 10)
                 }
 
                 OutlookImageView(
