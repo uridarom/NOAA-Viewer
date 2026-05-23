@@ -20,23 +20,6 @@ struct OutlookImageView: View {
                 ProgressView()
                     .tint(Color.textSecondary)
             }
-
-            if isLocalView {
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Text("LOCAL VIEW")
-                            .font(.courier(11, weight: .bold))
-                            .foregroundStyle(Color.accentAmber)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color.bgPrimary.opacity(0.85))
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                            .padding(10)
-                    }
-                }
-            }
         }
         .aspectRatio(4 / 3, contentMode: .fit)
         .gesture(
