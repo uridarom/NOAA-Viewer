@@ -49,6 +49,8 @@ struct ContentView: View {
                         let days = OutlookDay.allCases
                         guard let idx = days.firstIndex(of: viewModel.selectedDay) else { return }
                         let newIdx = max(0, min(days.count - 1, idx + delta))
+                        guard newIdx != idx else { return }
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         viewModel.selectedDay = days[newIdx]
                     }
                 )
