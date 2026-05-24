@@ -151,17 +151,12 @@ struct ContentView: View {
     // MARK: - Computed strings
 
     private var outlookTitle: String {
-        viewModel.selectedDay.isGrouped
-            ? "Day 4–8 Outlook"
-            : "Day \(viewModel.selectedDay.rawValue) Convective Outlook"
+        "Day \(viewModel.selectedDay.rawValue) Convective Outlook"
     }
 
     private var subtitleText: String {
         if viewModel.isLocalView, let wfo = viewModel.wfo {
             return "Showing \(wfo) region — tap to return"
-        }
-        if viewModel.selectedDay.isGrouped {
-            return "Days 4–8 share a combined outlook"
         }
         return "Last Updated: \(viewModel.lastUpdatedString) (next \(viewModel.nextIssuanceString(for: viewModel.selectedDay)))"
     }
