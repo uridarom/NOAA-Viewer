@@ -19,10 +19,11 @@ struct HeaderView: View {
                     .padding(.bottom, 10)
             }
             Spacer()
-            HStack(spacing: 0) {
+            HStack(spacing: -1) {
                 iconButton("gearshape", action: onSettings)
                 refreshButton
             }
+            .padding(.trailing, -4)
         }
     }
 
