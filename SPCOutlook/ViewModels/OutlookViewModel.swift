@@ -258,10 +258,23 @@ final class OutlookViewModel: ObservableObject {
         Self.timeFormatter.string(from: IssuanceSchedule.nextIssuance(for: day))
     }
 
+    func outlookDateString(for day: OutlookDay) -> String {
+        let offset = day.rawValue - 1
+        let date = Calendar.current.date(byAdding: .day, value: offset, to: Date()) ?? Date()
+        return Self.dateFormatter.string(from: date)
+    }
+
     private static let timeFormatter: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "en_US")
         f.dateFormat = "h:mm a"
+        return f
+    }()
+
+    private static let dateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US")
+        f.dateFormat = "M/d/yy"
         return f
     }()
 

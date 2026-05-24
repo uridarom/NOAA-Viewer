@@ -151,7 +151,9 @@ struct ContentView: View {
     // MARK: - Computed strings
 
     private var outlookTitle: String {
-        "Day \(viewModel.selectedDay.rawValue) Convective Outlook"
+        let dateStr = viewModel.outlookDateString(for: viewModel.selectedDay)
+        let suffix = dateStr.isEmpty ? "" : " (\(dateStr))"
+        return "Day \(viewModel.selectedDay.rawValue) Convective Outlook\(suffix)"
     }
 
     private var subtitleText: String {
