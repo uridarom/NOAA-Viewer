@@ -27,14 +27,19 @@ struct ContentView: View {
                         .padding(.bottom, 10)
                 }
 
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(outlookTitle)
-                        .font(.courier(14, weight: .bold))
-                        .foregroundStyle(Color.textPrimary)
-                    Text(subtitleText)
-                        .font(.courier(12))
-                        .foregroundStyle(subtitleColor)
-                        .padding(.bottom, 10)
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(outlookTitle)
+                            .font(.courier(14, weight: .bold))
+                            .foregroundStyle(Color.textPrimary)
+                        Text(subtitleText)
+                            .font(.courier(12))
+                            .foregroundStyle(subtitleColor)
+                            .padding(.bottom, 10)
+                    }
+                    Spacer()
+                    downloadButton
+                        .padding(.trailing, -4)
                 }
 
                 OutlookImageView(
@@ -104,6 +109,33 @@ struct ContentView: View {
         }
         } // NavigationStack
     }
+
+    // MARK: - Download button
+
+    @ViewBuilder
+    private var downloadButton: some View {
+        Button {
+            Task { await viewModel.saveCurrentImageToPhotos() }
+        } label: {
+            Group {
+                if viewModel.isSavingPhoto {
+                    ProgressView()
+                        .tint(Color.textPrimary)
+                } else {
+                    Image(systemName: "square.and.arrow.down")
+                        .foregroundStyle(Color.textPrimary)
+                }
+            }
+            .frame(width: 36, height: 36)
+            .background(Color.bgCard)
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+            .frame(width: 44, height: 44)
+            .contentShape(Rectangle())
+        }
+        .disabled(viewModel.outlookImage == nil || viewModel.isSavingPhoto)
+        .padding(.top, -6)
+    }
+    
 
     // MARK: - Discussion area
 

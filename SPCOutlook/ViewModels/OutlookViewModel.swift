@@ -1,4 +1,5 @@
 import CoreLocation
+import Photos
 import SwiftUI
 
 @MainActor
@@ -8,8 +9,9 @@ final class OutlookViewModel: ObservableObject {
     @Published var outlookImage: UIImage?
     @Published var thumbnails: [OutlookDay: UIImage] = [:]
     @Published var discussion: ParsedDiscussion?
-    @Published var isLoading    = false
-    @Published var isRefreshing = false
+    @Published var isLoading      = false
+    @Published var isRefreshing   = false
+    @Published var isSavingPhoto  = false
     @Published var toastMessage: String? = nil
     @Published var userCoordinate: CLLocationCoordinate2D?
     @Published var wfo: String?
@@ -294,6 +296,28 @@ final class OutlookViewModel: ObservableObject {
                 ?? imageURL(for: day, risk: risk)
         }
         return imageURL(for: day, risk: risk)
+    }
+
+    // MARK: - Save to Photos
+
+    func saveCurrentImageToPhotos() async {
+        guard let image = outlookImage, !isSavingPhoto else { return }
+        isSavingPhoto = true
+        defer { isSavingPhoto = false }
+
+        let status = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
+        guard status == .authorized || status == .limited else {
+            showToast("Photo access denied")
+            return
+        }
+        do {
+            try await PHPhotoLibrary.shared().performChanges {
+                PHAssetChangeRequest.creationRequestForAsset(from: image)
+            }
+            showToast("Saved to Photos")
+        } catch {
+            showToast("Save failed")
+        }
     }
 
     // MARK: - Toast
