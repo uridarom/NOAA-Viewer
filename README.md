@@ -14,7 +14,9 @@ To install the app, download the repository and build the app on your desired de
 ## Using the app
 
 The app is very simple.
-Swipe left or right (or click on the day selector on the top right) to change dates. Choose the specific risk (general, wind, hail, tornado) using the buttons on the bottom (if applicable). Tap on the outlook image to view your specific region. 
+Swipe left or right (or click on the day selector on the top right) to change dates. Choose the specific risk (general, wind, hail, tornado) using the buttons on the bottom (if applicable). Tap on the outlook image to view your specific region. Click the download button to save the outlook to your camera roll.
+<br>
 Local risks are listed on the top left. The forecast discussion can be read at the bottom. Click the refresh button to check for new outlooks (although the app should update automatically when a new outlook is released). 
 
-<img width="338" height="673" alt="Screenshot 2026-05-24 at 3 37 27 PM" src="https://github.com/user-attachments/assets/be394583-ece8-46f5-9541-a4c0d303a0fb" />
+<img width="430" height="866" alt="Screenshot 2026-05-24 at 4 14 27 PM" src="https://github.com/user-attachments/assets/336d2ce6-320f-41f9-bac4-e56de5336d71" />
+
