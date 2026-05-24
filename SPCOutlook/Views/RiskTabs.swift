@@ -37,5 +37,14 @@ struct RiskTabs: View {
                 .background(isSelected && !disabled ? Color.bgTabSelected : Color.bgTabUnselected)
                 .clipShape(RoundedRectangle(cornerRadius: 2))
         }
+        .buttonStyle(RiskTabButtonStyle(isDisabled: disabled))
+    }
+}
+
+private struct RiskTabButtonStyle: ButtonStyle {
+    let isDisabled: Bool
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(isDisabled || !configuration.isPressed ? 1.0 : 0.7)
     }
 }
