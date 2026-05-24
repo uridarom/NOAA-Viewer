@@ -163,7 +163,7 @@ struct ContentView: View {
         if viewModel.selectedDay.isGrouped {
             return "Days 4–8 share a combined outlook"
         }
-        return "Tap for local view, swipe for Day \(min(viewModel.selectedDay.rawValue + 1, 8))"
+        return "Last Updated: \(viewModel.lastUpdatedString) (next \(viewModel.nextIssuanceString(for: viewModel.selectedDay)))"
     }
 
     private var subtitleColor: Color {

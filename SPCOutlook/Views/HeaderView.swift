@@ -13,7 +13,7 @@ struct HeaderView: View {
                 Text("SPC OUTLOOK")
                     .font(.courier(22, weight: .bold))
                     .foregroundStyle(Color.textPrimary)
-                Text("Last Updated: \(lastUpdated) (next \(nextIssuance))")
+                Text(Self.formattedCurrentDate)
                     .font(.courier(13))
                     .foregroundStyle(Color.textSecondary)
                     .padding(.bottom, 10)
@@ -24,6 +24,20 @@ struct HeaderView: View {
                 refreshButton
             }
         }
+    }
+
+    private static var formattedCurrentDate: String {
+        let now = Date()
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: now)
+        let year = calendar.component(.year, from: now)
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MMMM"
+        let month = monthFormatter.string(from: now)
+        let ordinalFormatter = NumberFormatter()
+        ordinalFormatter.numberStyle = .ordinal
+        let dayOrdinal = ordinalFormatter.string(from: NSNumber(value: day)) ?? "\(day)"
+        return "\(month) \(dayOrdinal), \(year)"
     }
 
     @ViewBuilder
