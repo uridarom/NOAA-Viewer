@@ -3,10 +3,6 @@
 A simple lightweight app for viewing SPC Severe Weather Outlooks on mobile. Built for iOS.
 I built this app because I didn't like going on the SPC website every day to check the outlooks, and wanted a nice UI to interact with.
 
-## Making the app
-
-I manually designed the app UI (AppDesignReference.png) and listed the features and capabilities. I then used Claude Opus 4.7 to create an implementation plan (SPC_App_Spec.md). The app was then built following the implementation plan with Claude Code using Sonnet 4.6, with some manual code adjustments when necessary. 
-
 ## Installing the app
 
 To install the app, download the repository and build the app on your desired device using XCode (Mac only). 
